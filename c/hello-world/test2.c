@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <stdbool.h>
+//153
 bool is_armstrong_number(int candidate)
 {
     if (candidate < 10)
@@ -10,17 +11,17 @@ bool is_armstrong_number(int candidate)
     int digit_count = log10(candidate) + 1;
 
     int num = candidate;
-    int pow_total = 0;
+    int armstrong = 0;
     while (num > 0)
     {
-        int pow_temp = num % 10;
-        int pow_temp_total = 1;
-        for (int i = 0; i < digit_count; i++)
-            pow_temp_total *= pow_temp;
-        pow_total += pow_temp_total;
-        num /= 10;
+        int last_digit = num % 10;//получаем последнюю цифру в числе
+        int power_last_digit = 1;//размер числа на 1
+        for (int i = 0; i < digit_count; i++){
+            power_last_digit =power_last_digit * last_digit;}
+        armstrong = armstrong + power_last_digit;
+        num =num / 10;
     }
-    return candidate == pow_total;
+    return candidate == armstrong;
 }
 int main(){
     int o;
